@@ -297,6 +297,8 @@ func main() {
 		p, err = transip.NewTransIPProvider(cfg.TransIPAccountName, cfg.TransIPPrivateKeyFile, domainFilter, cfg.DryRun)
 	case "scaleway":
 		p, err = scaleway.NewScalewayProvider(ctx, domainFilter, cfg.DryRun)
+	case "hosts":
+		p, err = provider.NewHostsProvider(cfg.HostsFile, cfg.DryRun)
 	default:
 		log.Fatalf("unknown dns provider: %s", cfg.Provider)
 	}
